@@ -69,6 +69,14 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Archivo-Italic-VariableFont_wdth,wght.ttf</string>
+		<string>Archivo-VariableFont_wdth,wght.ttf</string>
+		<string>ConcertOne-Regular.ttf</string>
+		<string>Lato.ttf</string>
+		<string>Oswald-Bold.ttf</string>
+		<string>Oswald-VariableFont_wght.ttf</string>
+		<string>PTSans-Bold.ttf</string>
+		<string>PTSans-Regular.ttf</string>
 	</array>
 </dict>
 </plist>
