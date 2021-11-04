@@ -1,20 +1,30 @@
 import React from 'react'
-import { View, Text, StyleSheet, Dimensions, Image } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Alert } from 'react-native'
 import capa from '../../assets/images/o_paradoxo_do_caos.jpg'
 import { Button, Icon } from 'react-native-elements'
 
 export default props => {
 
-    function excluir(livro) {
+    function excluir() {
+        Alert.alert('Excluir Livro', `Realmene você quer apagar este livro?! id: ${props.id}`,
+            [
+                {text: 'Sim', onPress(){
+                    console.warn('ok')
+                }},
+                {text: 'Não'}
 
+            ])
     }
 
-    function alterar(livro) {
-
+    function exibir() {
+        Alert.alert('Exibir Livro', `Realmene você quer exibir este livro?! id: ${props.id}`)
     }
 
     return (
         <View style={styles.container}>
+            
+            <TouchableOpacity style={styles.touchable}
+                onPress={exibir}>
 
             <Image source={capa} style={styles.image} />
 
@@ -29,11 +39,14 @@ export default props => {
 
             </View>
 
+            </TouchableOpacity>
+            
+
             <View style={styles.botoes}>
                 <Button
-                    onPress={alterar}
+                    onPress={() => props.navigation.navigate('LivroForm', props)}
                     type='clear'
-                    icon={<Icon name='edit' size={25} color='rgba(0,0,0,0.8)'/>}
+                    icon={<Icon name='edit' size={25} color='#2d5373'/>}
                 />
 
                 <Button
@@ -53,11 +66,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         backgroundColor: '#eee',
         borderBottomWidth: 1,
         borderBottomColor: '#ccc',
         marginVertical: 10,
+    },
+    touchable: {
+        display: 'flex',
+        flexDirection: 'row'
     },
     image: {
         width: Dimensions.get('window').width * 0.2,
@@ -68,7 +85,7 @@ const styles = StyleSheet.create({
         
     },
     descricao: {
-        flex: 1
+        
     },
     titulo: {
         fontFamily: 'PTSans-Bold',

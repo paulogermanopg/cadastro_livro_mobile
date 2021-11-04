@@ -11,7 +11,7 @@ export default props => {
                 keyExtractor={livro => livro.id.toString()}
                 data={livros}
                 renderItem={( { item } ) =>
-                    <LivroContent key={item.id} {...item} />}
+                    <LivroContent key={item.id} {...item} navigation={props.navigation} />}
             />
         </View>
     )
