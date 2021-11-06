@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, Text, TextInput, StyleSheet, Button, ScrollView } from 'react-native'
+import LivrosContext from '../context/LivrosContext'
 
 export default props => {
     const [livro, setLivro] = useState(props.route.params ? props.route.params : {})
+    const { dispatch } = useContext(LivrosContext)
+
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -55,6 +58,10 @@ export default props => {
                     title='Salvar Livro'
                     color='#4682B4'
                     onPress={() => {
+                        dispatch({
+                            type: livro.id ? 'updateLivro' : 'createLivro',
+                            payload: livro
+                        })
                         props.navigation.goBack()
                     }}
                 />

@@ -1,15 +1,18 @@
 import React from 'react'
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Alert } from 'react-native'
-import capa from '../../assets/images/o_paradoxo_do_caos.jpg'
 import { Button, Icon } from 'react-native-elements'
 
 export default props => {
 
     function excluir() {
-        Alert.alert('Excluir Livro', `Realmene você quer apagar este livro?! id: ${props.id}`,
+        Alert.alert('Excluir Livro', `Realmene você quer apagar este livro?! Título: ${props.titulo}`,
             [
-                {text: 'Sim', onPress(){
-                    console.warn('ok')
+                {text: 'Sim', 
+                    onPress(){
+                        props.dispatch({
+                            type:'deleteLivro',
+                            payload: props.id
+                        })
                 }},
                 {text: 'Não'}
 
@@ -26,7 +29,7 @@ export default props => {
             <TouchableOpacity style={styles.touchable}
                 onPress={exibir}>
 
-            <Image source={capa} style={styles.image} />
+            <Image source={{uri:props.capaUrl}} style={styles.image} />
 
             <View style={styles.descricao}>
 
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: '#eee',
         borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
+        borderBottomColor: '#a3a3a3',
         marginVertical: 10,
     },
     touchable: {
@@ -82,6 +85,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginLeft: 5,
         marginVertical: 10,
+        borderRadius: 10,
         
     },
     descricao: {
