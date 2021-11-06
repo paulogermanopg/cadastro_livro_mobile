@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Alert } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
+import ModalExibirLivro from './ModalExibirLivro'
 
 export default props => {
 
+    const [modalLivro, setModalLivro] = useState(false)
+
     function excluir() {
-        Alert.alert('Excluir Livro', `Realmene você quer apagar este livro?! Título: ${props.titulo}`,
+        Alert.alert('Excluir Livro', `Deseja realmene apagar este livro? Título: ${props.titulo}`,
             [
                 {text: 'Sim', 
                     onPress(){
@@ -19,15 +22,15 @@ export default props => {
             ])
     }
 
-    function exibir() {
-        Alert.alert('Exibir Livro', `Realmene você quer exibir este livro?! id: ${props.id}`)
-    }
-
     return (
         <View style={styles.container}>
+
+            <ModalExibirLivro isVisible={modalLivro} onCancel={() => setModalLivro(false)}
+                livroCapa={props.capaUrl} livroTitulo={props.titulo} livroSinopse={props.sinopse}
+                livroAutor={props.autor} livroPaginas={props.paginas}/>
             
             <TouchableOpacity style={styles.touchable}
-                onPress={exibir}>
+                onPress={() => setModalLivro(true)}>
 
             <Image source={{uri:props.capaUrl}} style={styles.image} />
 
@@ -70,9 +73,9 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#eee',
+        backgroundColor: '#e7e6e6',
         borderBottomWidth: 1,
-        borderBottomColor: '#a3a3a3',
+        borderBottomColor: '#ccc',
         marginVertical: 10,
     },
     touchable: {

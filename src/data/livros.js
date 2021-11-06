@@ -2,7 +2,7 @@ export default [
     {
         id: 1,
         titulo: 'O Paradoxo do Caos',
-        sinopse: 'Mistério sobre viagem no tempo e investigação criminal.',
+        sinopse: 'Já imaginaram estar em uma cela, cercados por ratos que gritam e guardas a matarem com barras de ferro? Ou perderem tudo o que possuíam, até mesmo a própria memória para outro alguém? Envelhecer em uma prisão, lendo uma única frase escrita a carvão na parede, sabendo que nem sequer aquele século é o seu?',
         autor: 'Paulo Germano',
         paginas: '557',
         capaUrl:
